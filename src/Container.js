@@ -1,19 +1,20 @@
 import { useState } from "react";
 
 const Container = (props) => {
-  const {name} = props
-
-  const [message, setMessage] = useState(0)
-
-  const handleClicked = () => {
-
+  const [showContent, setShowContent] = useState (true)
+  return (
+    <div className="Container">
+      <div>
+      <h1>{props.header}</h1>
+      <button onClick={() => setShowContent(!showContent)}>
+        {showContent ? 'Hide' : 'Show'}
+      </button>
+      </div>
+      {showContent && props.children}
+    </div>
+  );
   }
 
-  return (
-    <>
-    <h1>{name ? name : "Container"}</h1>
-    </>
-  );
-}
+
 
 export default Container
